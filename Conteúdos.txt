@@ -15,7 +15,6 @@ CICS - Conteúdo principal
 MQ - Conteúdo principal
 -----------------------
 
-
 INTRODUÇÃO
 	ARQUIVOS MQ
 	FUNCIONAMENTO
