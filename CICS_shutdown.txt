@@ -1,0 +1,100 @@
+
+
+CESD – Fluxo detalhado de execução
+
+primeiro passo:
+-espera 2 minutos, então emite um start com delay da CESD a cada 2 segundos.
+-a cada 2 segudos checa o numero de tasks em execução.
+-se o numero não muda em 8(Shut NORMAL) amostras, o primeiro passo de PURGE se inicia
+
+PURGE step 1:
+-Fecha os arquivos de transaction DUMP.
+-emite PURGE para todas as tasks em execução
+-a cada 2 segudos checa o numero de tasks em execução.
+-se o numero não muda em 8(Shut NORMAL) amostras, o segundo passo de PURGE se inicia
+
+PURGE step 2:
+Encerra comunicações SNA e TCPIP.
+-a cada 2 segudos checa o numero de tasks em execução.
+-se o numero não muda em 8(Shut NORMAL) amostras, o terceiro passo de PURGE se inicia
+
+PURGE step 3:
+Se ainda houver transações,o CICS ABENDA, mantendo dados das transações ainda existentes em LOG para posterior backout em um novo restart do CICS.
+
+
+CESD – Fluxo simplificado de execução
+
+(1) CESD
+     2 minutos
+    16 segundos = 8 X 2 segundos
+(2) PURGE
+    16 segundos = 8 X 2 segundos
+(3) Para SNA e TCPIP
+    16 segundos = 8 X 2 segundos
+(4) CICS ABENDA
+
+
+
+CESD – Teste 1 no ambiente de Desenvolvimento (sem transação CEMT em execução)
+ 
+(1) 08.55.22 S0078852  +DFHTM1715 H2ACICD6 CICS is being quiesced by us
+    2m
+    08.57.22 S0078852  +DFHCESD  H2ACICD6 THERE ARE NOW 0007 TAS
+    16s
+(2) 08.57.39 S0078852  +DFHCESD  H2ACICD6 ATTEMPTING TO PURGE TR
+    16s
+(3) 08.57.56 S0078852  +DFHZC2316 H2ACICD6 VTAM ACB is close
+    16s
+(4) CICS Abend
+    08.58.14 S0078852  +DFHKE1799 H2ACICD6 TERMINATION OF CICS IS COMPLE
+Total = 02:52
+
+
+CESD – Teste 2 no ambiente de Desenvolvimento (sem transação CEMT em execução)
+
+(1) 09.11.07 S0089065  +DFHTM1715 H2ACICD6 CICS is being qui
+    2m
+    09.13.07 S0089065  +DFHCESD  H2ACICD6 THERE ARE NOW 0008 TA
+    16s
+(2) purge    09.13.24 S0089065  +DFHCESD  H2ACICD6 ATTEMPTING TO PURGE T
+    16s
+(3) vtam     09.13.41 S0089065  +DFHZC2316 H2ACICD6 VTAM ACB is 
+    16s
+(4) CICS Abend
+             09.13.59 S0089065  +DFHKE1799 H2ACICD6 TERMINATION OF CICS IS CO
+Total = 02:52
+
+
+
+CESD – Teste 3 no ambiente de Desenvolvimento (com transação CEMT em execução) - c/ SPURGE=YES
+
+(1) 10.00.37 S0089408  +DFHTM1715 H2ACICD6 CICS is being quiesced by
+    2m
+    10.02.37 S0089408  +DFHCESD  H2ACICD6 THERE ARE NOW 0008 TASK
+    16s
+(2) purge    10.02.53 S0089408  +DFHCESD  H2ACICD6 ATTEMPTING TO PURGE TRAN
+             10.02.56 S0089408  +DFHCESD  H2ACICD6 THERE ARE NOW 0007 TASKS STILL
+    16s
+ (3) vtam     10.03.13 S0089408  +DFHZC2316 H2ACICD6 VTAM ACB is closed 
+    16s
+(4) CICS Abend
+             10.03.30 S0089408  +DFHKE1799 H2ACICD6 TERMINATION OF CICS IS COM
+Total = 02:53
+
+
+
+CESD – Teste 3 no ambiente de Desenvolvimento (com transação CEMT em execução) - c/ SPURGE=NO
+
+(1) 10.04.39 S0089431  +DFHTM1715 H2ACICD6 CICS is being quiesced b
+    2m
+    10.06.39 S0089431  +DFHCESD  H2ACICD6 THERE ARE NOW 0008 TASKS 
+    16s
+(2) purge    10.06.56 S0089431  +DFHCESD  H2ACICD6 ATTEMPTING TO PURGE TRAN
+    16s
+(3) vtam     10.07.14 S0089431  +DFHZC2316 H2ACICD6 VTAM ACB is close
+	       10.07.15 S0089431  +DFHCESD  H2ACICD6 THERE ARE NOW 0007 TASKS STILL 
+    16s
+(4) CICS Abend
+             10.07.32 S0089431  +DFHKE1799 H2ACICD6 TERMINATION OF CICS IS COMPLETE.
+Total = 02:53
+-------------------
