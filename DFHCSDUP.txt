@@ -1,0 +1,80 @@
+
+
+//SUPCICSC  JOB ,CICS,CLASS=J,MSGCLASS=T,MSGLEVEL=(1,1),
+// NOTIFY=&SYSUID,TIME=1439                             
+//******************************************************
+//UPGRCSD  EXEC PGM=DFHCSDUP,REGION=8M,                 
+//         PARM='CSD(READWRITE),PAGESIZE(60),NOCOMPAT'  
+//STEPLIB  DD DSN=CICS.SDFHLOAD,DISP=SHR                
+//DFHCSD   DD DSN=CICSP.P0.DFHCSD,DISP=SHR              
+//DFHCSDF  DD DSN=CICSH.DFHCSD,DISP=SHR                 
+//SYSPRINT DD SYSOUT=*                                  
+//SYSIN    DD *                                         
+  COPY G(GMCN)  TO (GMCNN)  FROMCSD(DFHCSDF)  REPLACE   
+  COPY G(GMCNR)  TO (GMCNNR)  FROMCSD(DFHCSDF)  REPLACE 
+
+-----------------------------------------------------------------
+//DEFCSD52 JOB (USUPRE01),'SUPORTE',MSGCLASS=T,              
+//         CLASS=A,NOTIFY=&SYSUID,MSGLEVEL=(1,1),REGION=0K   
+//*----------------------------------------------------------
+//*                  ALOCA CSD - CMAS   - CICS V520          
+//*----------------------------------------------------------
+//DELETE    EXEC PGM=IDCAMS,REGION=1M                        
+//SYSPRINT DD SYSOUT=*                                       
+//SYSIN    DD *                                              
+ DELETE CICSP.V5R02M0.SID.DFHCSD CLUSTER PURGE               
+ SET MAXCC=0                                                 
+/*                                                           
+//DEFCSD   EXEC PGM=IDCAMS,REGION=1M                         
+//SYSPRINT DD SYSOUT=*                                       
+//SYSIN    DD *                                              
+         DEF CLUSTER(NAME(CICSP.V5R02M0.SID.DFHCSD) -        
+                   INDEXED -                                 
+                   CYL(50 20) -                              
+                   RECORDSIZE(200 2000)-                     
+                   FREESPACE(10 5)-                          
+                   VOLUME(Z10347) SHR(3)) -                  
+           DATA(NAME(CICSP.V5R02M0.SID.DFHCSD.DATA) -        
+                   UNIQUE -                                  
+                   KEYS(22 0))-                              
+          INDEX(NAME(CICSP.V5R02M0.SID.DFHCSD.INDEX) -       
+                   UNIQUE)                                   
+ /* THE CSD IS NOW READY TO BE INITIALIZED BY PGM=DFHCSDUP */
+/*                                                        
+//*                                                       
+//REPRO    EXEC PGM=IDCAMS                                
+//SYSPRINT DD SYSOUT=*                                    
+//ENTRADA  DD DSN=CICSP.V4R02M0.SID.DFHCSD.PLEX01,DISP=SHR
+//SAIDA    DD DSN=CICSP.V5R02M0.SID.DFHCSD,DISP=SHR       
+//SYSIN    DD *                                           
+ REPRO   INFILE(ENTRADA) OUTFILE(SAIDA) ELIMIT(99999)     
+/*                                                        
+//UPGRCSD  EXEC PGM=DFHCSDUP,REGION=1M,COND=(0,LT,DEFCSD) 
+//STEPLIB  DD DSN=IBM.CTS520B.CICS.SDFHLOAD,DISP=SHR      
+//DFHCSD DD DSN=CICSP.V5R02M0.SID.DFHCSD,DISP=SHR         
+//SYSUT1   DD UNIT=SYSDA,SPACE=(1024,(100,100))           
+//SYSPRINT DD SYSOUT=*                                    
+//SYSIN    DD *                                           
+  UPGRADE                                                 
+/*                                                        
+
+-----------------------------------------------------------------
+
+//SUPCICS   JOB ,CICS,CLASS=G,MSGCLASS=T,MSGLEVEL=(1,1), 
+// NOTIFY=&SYSUID,TIME=1439                              
+//INCLSYMB INCLUDE MEMBER=SYMB&SYSCLONE                  
+//*******************************************************
+//COPYCSD  EXEC PGM=DFHCSDUP,REGION=8M,COND=(0,NE)       
+//STEPLIB  DD DSN=&PFXCICS..SDFHLOAD,DISP=SHR            
+//DFHCSD   DD DISP=SHR,DSN=CICSP.V5R02M0.DFHCSD          
+//SYSPRINT DD SYSOUT=*                                   
+//SYSIN    DD *                                          
+  CEDA COPY TRANC(ORM$OQBB) G(GORMR)   TO(GORMW) REPLACE 
+  CEDA COPY TRANS(OQBB)     G(GORMR)   TO(GORMW) REPLACE 
+  CEDA COPY  DB2E(OQBB)     G(GORM )   TO(GORMW) REPLACE 
+  CEDA COPY  DB2T(OQBB)     G(GORM )   TO(GORMW) REPLACE 
+  CEDA COPY TRANC(ORM$OQBE) G(GORM )   TO(GORMW) REPLACE 
+  CEDA COPY TRANS(OQBE)     G(GORM )   TO(GORMW) REPLACE 
+/*
+
+
