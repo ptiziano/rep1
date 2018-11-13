@@ -1,0 +1,19 @@
+
+
+Generating IBM MQ traces
+http://www-01.ibm.com/support/docview.wss?uid=swg21174924
+
+
+Starting MSTR internal trace
+/cpf START TRACE(GLOBAL) DEST(RES) CLASS(*) RMID(*)
+https://www-01.ibm.com/support/docview.wss?uid=swg21665092
+
+
+Starting CHIN trace
+/cpf START TRACE(CHINIT)
+https://www-01.ibm.com/support/docview.wss?uid=swg21665093
+
+
+Using MQSC commands
+Use the MQSC command START TRACE to start traces.
+https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.ref.adm.doc/q086740_.htm
