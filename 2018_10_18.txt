@@ -1,0 +1,389 @@
+
+
+2018_10_18
+----------
+3_Chapter16A_System_Programming
+
+turma 1 - slide 19
+turma 2 - slide 8
+
+
+
+2018_10_19
+----------
+3_Chapter16A_System_Programming
+
+turma 1 - slide 39
+turma 2 - slide 39
+
+
+
+
+2018_10_22
+----------
+3_Chapter16A_System_Programming
+
+turma 1 - slide 39 - 46(fim)
+turma 2 - slide 39 - 46(fim)
+
+4_Chapter16B_IPL_Process
+
+turma 1 - slide 1 - 21(fim)
+turma 2 - slide 1 - 21(fim)
+
+
+5_Z127_1_43_Foils
+
+turma 1 - slide 1 - 5
+turma 2 - slide 0
+
+
+2018_10_23
+----------
+
+5_Z127_1_43_Foils
+
+turma 1 - slide 5 - 43(fim)
+turma 2 - slide 0 - 43(fim)
+
+6_zOS_determinação de problema_Mainview - contenção 1
+
+7_zOS_determinação de problema_Mainview - contenção 2
+
+============================================ CICS
+
+2018_10_24
+----------
+
+1_CICS_Datasets
+
+turma 1 - slide 1 - 10(fim)
+turma 2 - slide 1 - 8
+
+
+2018_10_25
+----------
+
+2_Startup_e_Shutdown
+
+turma 1 - slide 1 - 7
+
+
+
+1_CICS_Datasets
+
+turma 2 - slide 9 - 10(fim)
+
+2_Startup_e_Shutdown
+
+turma 2 - slide 1 - 7
+
+
+2018_10_26
+----------
+
+2_Startup_e_Shutdown
+
+turma 1 - slide 8 - 12(fim)
+turma 2 - slide 7 - 12(fim)
+
+
+3_CICS_Control_blocks
+
+turma 1 - slide 1 - 7
+turma 2 - slide 1 - 14(fim)
+faltou o manual na turma 2 (pag 384, 386, 392)
+faltou tbm o processo de shutdown(github)
+
+
+
+2018_10_29
+----------
+
+3_CICS_Control_blocks
+
+turma 1 - slide 7 - 14(fim)
+
+CICS domains
+https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.3.0/com.ibm.cics.ts.diagnosisref.doc/topics/dfhs3w1.html
+
+CICS DFH message Identifiers
+https://www.ibm.com/support/knowledgecenter/en/SSGMGV_3.1.0/com.ibm.cics.ts31.doc/dfhg4/dfhg402.htm
+
+CICS supplied transactions descriptions
+https://www.ibm.com/support/knowledgecenter/en/SSGMCP_5.2.0/com.ibm.cics.ts.systemprogramming.doc/topics/dfha7_cst_descriptions.html
+
+
+
+4_TRANSACOES_FORNECIDAS
+
+turma 1 - slide 1 - 3
+turma 2 - slide 1,2,4 - FALTA O 3
+
+
+2018_10_30
+----------
+
+4_TRANSACOES_FORNECIDAS
+
+turma 1 - slide 3 - 4(fim)
+turma 2 - slide 1,2,4 - FALTA O 3 - 3(fim) ok
+
+PRÁTICA DE TRANSAÇÕES FORNECIDAS:
+CETR
+CSDB
+DSNC
+CLER
+etc.
+
+
+
+2018_10_31
+----------
+
+turma 1
+turma 2
+
+AULA PRÁTICA
+Definições de recursos CICS
+
+TRANSACTION
+PROGRAM
+REMOTE PROGRAM
+TDQUEUE
+
+
+2018_11_01
+----------
+
+turma 1
+turma 2
+
+AULA PRÁTICA
+Definições de recursos CICS
+
+TSMODEL
+DOCTEMPLATE
+TRANCLASS
+DB2CONN
+MQCONN
+DB2ENTRY
+DB2TRAN
+
+2018_11_05
+----------
+
+turma 1
+turma 2
+
+AULA PRÁTICA
+	análise de STARTUP do CICS
+
+Determinação de Problemas
+	2 Exemplos práticos
+
+	Análise de Transaction DUMP
+
+
+============================================ MQ
+
+2018_11_06
+----------
+
+turma 1
+
+análise da PROC do MQ e dos INPUTS
+ADCD.Z22A.PROCLIB(CSQ8MSTR)
+CSQ800.CSQ8.SCSQPROC(CSQ4INP1)
+CSQ800.CSQ8.SCSQPROC(CSQ4INSG)
+
+
+
+
+turma 2
+--------------------------------CICS
+encerramento da aula de CICS
+Problem Determination
+
+--------------------------------MQ
+
+análise da PROC do MQ e dos INPUTS
+
+ADCD.Z22A.PROCLIB(CSQ8MSTR)
+//* SYSTEM INITIALIZATION INPUT FILES
+
+
+
+
+2018_11_07
+----------
+
+turma 1
+CSQ800.CSQ8.SCSQPROC(CSQ4INSG)
+DEFINE PROCESS( 'SYSTEM.DEFAULT.PROCESS' )
+
+
+turma 2
+CSQ800.CSQ8.SCSQPROC(CSQ4INSG)
+These are used by DEFINE commands
+
+
+
+
+2018_11_08
+----------
+
+turma 1
+CSQ800.CSQ8.SCSQPROC(CSQ4INSG)
+DEFINE PROCESS( 'SYSTEM.DEFAULT.PROCESS' )
+CSQ800.CSQ8.SCSQPROC(CSQ4INSS)
+start chin
+CSQ800.CSQ8.SCSQPROC(CSQ4INPX)
+
+
+turma 2
+CSQ800.CSQ8.SCSQPROC(CSQ4INSG)
+These are used by DEFINE commands
+
+DEFINE CHANNEL( 'SYSTEM.DEF.SENDER' ) +
+
+
+
+2018_11_09
+----------
+
+turma 1
+TELA DO MQ, definições
+	canal
+	fila local
+	Opção SYSTEM 1
+		listeners
+
+
+turma 2
+CSQ800.CSQ8.SCSQPROC(CSQ4INSG)
+These are used by DEFINE commands
+DEFINE CHANNEL( 'SYSTEM.DEF.SENDER' ) +
+
+TELA DO MQ, definições
+	canal
+	fila local
+
+
+
+
+
+2018_11_12
+----------
+
+turma 1
+Segurança RACF
+arquivo: MQ_profiles
+
+
+
+turma 2
+Segurança RACF
+arquivo: MQ_profiles
+
+
+
+
+2018_11_13
+----------
+
+turma 1
+arquivos:
+1_INEFE_infos MQ
+2_INEFE_fila consumida pela Baixa
+3_INEFE_mq_erro
+4_INEFE_SISPB_erros
+5_INEFE_Erros MQ
+6_INEFE_TRACE CICS
+
+
+turma 2
+1_INEFE_infos MQ
+2_INEFE_fila consumida pela Baixa
+3_INEFE_mq_erro
+4_INEFE_SISPB_erros
+5_INEFE_Erros MQ
+
+
+
+2018_11_14
+----------
+
+turma 1
+arquivos:
+6_INEFE_TRACE CICS
+7_INEFE_Trace CICS vs SP
+TRACE mq:
+Generating IBM MQ traces
+http://www-01.ibm.com/support/docview.wss?uid=swg21174924
+
+Starting MSTR internal trace
+/cpf START TRACE(GLOBAL) DEST(RES) CLASS(*) RMID(*)
+https://www-01.ibm.com/support/docview.wss?uid=swg21665092
+
+Starting CHIN trace
+/cpf START TRACE(CHINIT)
+https://www-01.ibm.com/support/docview.wss?uid=swg21665093
+
+Using MQSC commands
+Use the MQSC command START TRACE to start traces.
+https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.ref.adm.doc/q086740_.htm
+
+
+turma 2
+5_INEFE_Erros MQ
+6_INEFE_TRACE CICS
+7_INEFE_Trace CICS vs SP
+
+
+
+
+2018_11_19
+----------
+
+turma 1
+
+TRACE mq:
+
+Using MQSC commands
+Use the MQSC command START TRACE to start traces.
+https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.ref.adm.doc/q086740_.htm
+
+INICIO DAS AULAS DE REXX
+
+8 LINHAS
+
+
+
+turma 2
+
+trace CICS CETR
+
+TRACE mq:
+Generating IBM MQ traces
+http://www-01.ibm.com/support/docview.wss?uid=swg21174924
+
+Starting MSTR internal trace
+/cpf START TRACE(GLOBAL) DEST(RES) CLASS(*) RMID(*)
+https://www-01.ibm.com/support/docview.wss?uid=swg21665092
+
+Starting CHIN trace
+/cpf START TRACE(CHINIT)
+https://www-01.ibm.com/support/docview.wss?uid=swg21665093
+
+Using MQSC commands
+Use the MQSC command START TRACE to start traces.
+https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_8.0.0/com.ibm.mq.ref.adm.doc/q086740_.htm
+
+
+INICIO DAS AULAS DE REXX
+
+8 LINHAS
+
+
+
